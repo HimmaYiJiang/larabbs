@@ -28,11 +28,12 @@ class UserRequest extends FormRequest
             'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' . Auth::id(),
             'email' => 'required|email',
             'introduction' => 'max:80',
+            'avatar' => 'mimes:jpeg,bmp,png,gif|dimensions:min_width=200,min_height=200',
         ];
     }
 
     public function attributes()
     {
-        return ['name' => '用户名', 'introduction' => '个人简介'];
+        return ['name' => '用户名', 'introduction' => '个人简介', 'avatar' => '头像'];
     }
 }
