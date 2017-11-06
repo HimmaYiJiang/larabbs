@@ -13,7 +13,7 @@ class TopicRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,26 @@ class TopicRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        switch($this->method())
+        {
+            // CREATE
+            case 'POST':
+                // UPDATE
+            case 'PUT':
+            case 'PATCH':
+            {
+                return [
+                    'title'       => 'required|min:2',
+                    'body'        => 'required|min:3',
+                    'category_id' => 'required|numeric',
+                ];
+            }
+            case 'GET':
+            case 'DELETE':
+            default:
+            {
+                return [];
+            };
+        }
     }
 }
