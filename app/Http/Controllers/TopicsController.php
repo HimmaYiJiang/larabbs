@@ -44,10 +44,11 @@ class TopicsController extends Controller
 
     public function store(TopicRequest $request, Topic $topic)
     {
+
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->save();
-
+       
         return redirect()->to($topic->link())->with('message', 'Created successfully.');
     }
 
