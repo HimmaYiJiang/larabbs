@@ -29,8 +29,13 @@ class TopicPolicy
      * @param Topic $topic
      * @return bool
      */
-    public function update(User $currentUser, Topic $topic)
+    public function update(User $user, Topic $topic)
     {
-        return $currentUser->id === $topic->user_id;
+        return $user->isAuthorOf($topic);
+    }
+
+    public function destroy(User $user, Topic $topic)
+    {
+        return $user->isAuthorOf($topic);
     }
 }
