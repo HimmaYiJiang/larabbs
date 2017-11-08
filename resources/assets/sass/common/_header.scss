@@ -15,3 +15,17 @@ body {
   margin-bottom: 40px;
   margin-top: 0px;
 }
+
+/* Notifications badge */
+
+.notifications-badge {
+  margin-top: -1;
+
+  .badge-fade {
+    background-color: #EBE8E8;
+  }
+
+  .badge-hint {
+    background-color: #d15b47 !important;;
+  }
+}
