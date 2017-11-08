@@ -53,7 +53,6 @@
                     @endif
                 </div>
             </div>
-
         </div>
     </div>
 @stop
