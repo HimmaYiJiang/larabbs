@@ -3,26 +3,13 @@
 namespace App\Policies;
 
 use App\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**
  * Class UserPolicy
  * @package App\Policies
  */
-class UserPolicy
+class UserPolicy extends Policy
 {
-    use HandlesAuthorization;
-
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
     /**
      * @param User $currentUser
      * @param User $user

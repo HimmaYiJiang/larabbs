@@ -3,22 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Models\Reply;
 
-class ReplyPolicy
+class ReplyPolicy extends Policy
 {
-    use HandlesAuthorization;
-
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
     public function destroy(User $user, Reply $reply)
     {
         return $user->isAuthorOf($reply) || $user->isAuthorOf($reply->topic);
