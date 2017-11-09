@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Link;
 use App\Models\Reply;
 use App\Models\Topic;
+use App\Observers\LinkObserver;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
 use Illuminate\Support\Facades\Event;
@@ -32,5 +34,6 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
         Topic::observe(new TopicObserver());
         Reply::observe(new ReplyObserver());
+        Link::observe(new LinkObserver());
     }
 }
