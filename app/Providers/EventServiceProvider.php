@@ -5,9 +5,11 @@ namespace App\Providers;
 use App\Models\Link;
 use App\Models\Reply;
 use App\Models\Topic;
+use App\Models\User;
 use App\Observers\LinkObserver;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
+use App\Observers\UserObserver;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -32,6 +34,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
+        User::observe(new UserObserver());
         Topic::observe(new TopicObserver());
         Reply::observe(new ReplyObserver());
         Link::observe(new LinkObserver());
